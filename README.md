@@ -27,6 +27,55 @@ A comprehensive web application for booking cricket and football grounds, PS5 ga
 - **PS5 Single Player**: ₹100/hour
 - **PS5 Double Player**: ₹150/hour
 
+## Screenshots
+
+### User Interface
+
+#### Login & Authentication
+![User Login](screenshots/user/screencapture-localhost-3000-login-2025-09-29-11_58_01.png)
+
+#### Ground Booking
+![Grounds List](screenshots/user/screencapture-localhost-3000-grounds-2025-09-29-12_04_05.png)
+![Ground Booking Form](screenshots/user/screencapture-localhost-3000-grounds-68da258cedb92c65bcb65c4a-book-2025-09-29-12_04_16.png)
+![Booking Confirmation](screenshots/user/screencapture-localhost-3000-grounds-68da258cedb92c65bcb65c4a-book-2025-09-29-12_04_37.png)
+
+#### My Bookings
+![My Bookings List](screenshots/user/screencapture-localhost-3000-my-bookings-2025-09-29-12_04_46.png)
+![Booking Details](screenshots/user/screencapture-localhost-3000-my-bookings-2025-09-29-12_05_00.png)
+![Booking Management](screenshots/user/screencapture-localhost-3000-my-bookings-2025-09-29-12_07_04.png)
+
+#### Events & PS5 Booking
+![Events Page](screenshots/user/screencapture-localhost-3000-events-2025-09-29-12_05_49.png)
+![PS5 Booking](screenshots/user/screencapture-localhost-3000-ps5-2025-09-29-12_06_31.png)
+
+#### User Dashboard
+![User Dashboard](screenshots/user/screencapture-localhost-3000-dashboard-2025-09-29-12_06_43.png)
+
+### Merchant Interface
+
+#### Merchant Dashboard
+![Merchant Dashboard](screenshots/merchant/screencapture-localhost-3000-merchant-2025-09-29-11_58_42.png)
+![Merchant Overview](screenshots/merchant/screencapture-localhost-3000-merchant-2025-09-29-11_58_54.png)
+
+#### Ground Management
+![Ground Management](screenshots/merchant/screencapture-localhost-3000-merchant-2025-09-29-11_59_07.png)
+![Add Ground](screenshots/merchant/screencapture-localhost-3000-merchant-2025-09-29-11_59_27.png)
+
+#### Booking Management
+![Booking Management](screenshots/merchant/screencapture-localhost-3000-merchant-2025-09-29-11_59_34.png)
+![Booking Details](screenshots/merchant/screencapture-localhost-3000-merchant-2025-09-29-11_59_59.png)
+
+#### Event Management
+![Event Management](screenshots/merchant/screencapture-localhost-3000-merchant-2025-09-29-12_00_07.png)
+
+### Admin Interface
+
+#### Admin Dashboard
+![Admin Dashboard](screenshots/admin/screencapture-localhost-3000-dashboard-2025-09-29-12_11_11.png)
+![Admin Panel](screenshots/admin/screencapture-localhost-3000-admin-2025-09-29-12_11_39.png)
+![Admin Management](screenshots/admin/screencapture-localhost-3000-admin-2025-09-29-12_11_45.png)
+![Admin Settings](screenshots/admin/screencapture-localhost-3000-admin-2025-09-29-12_11_54.png)
+
 ## Technology Stack
 
 ### Frontend
