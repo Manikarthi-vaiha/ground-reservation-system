@@ -6,8 +6,26 @@ const { adminAuth } = require('../middleware/auth');
 
 const router = express.Router();
 
+// Middleware to block admin access from mobile apps
+const blockMobileAdminAccess = (req, res, next) => {
+  const userAgent = req.get('User-Agent') || '';
+  const isMobileApp = userAgent.includes('Mobile') ||
+                     userAgent.includes('Android') ||
+                     userAgent.includes('iOS') ||
+                     req.get('X-Mobile-App') === 'true';
+
+  if (isMobileApp) {
+    return res.status(403).json({
+      success: false,
+      message: 'Admin access is not available on mobile applications'
+    });
+  }
+
+  next();
+};
+
 // Get all users and merchants
-router.get('/users', adminAuth, async (req, res) => {
+router.get('/users', blockMobileAdminAccess, adminAuth, async (req, res) => {
   try {
     const users = await User.find({ role: { $in: ['user', 'merchant'] } })
       .select('-password')
@@ -21,7 +39,7 @@ router.get('/users', adminAuth, async (req, res) => {
 });
 
 // Update user status (active/inactive)
-router.patch('/users/:id/status', adminAuth, [
+router.patch('/users/:id/status', blockMobileAdminAccess, adminAuth, [
   body('isActive').isBoolean().withMessage('isActive must be a boolean')
 ], async (req, res) => {
   try {
@@ -52,7 +70,7 @@ router.patch('/users/:id/status', adminAuth, [
 });
 
 // Delete user
-router.delete('/users/:id', adminAuth, async (req, res) => {
+router.delete('/users/:id', blockMobileAdminAccess, adminAuth, async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);
 
@@ -68,7 +86,7 @@ router.delete('/users/:id', adminAuth, async (req, res) => {
 });
 
 // Get site settings
-router.get('/settings', adminAuth, async (req, res) => {
+router.get('/settings', blockMobileAdminAccess, adminAuth, async (req, res) => {
   try {
     const settings = await Settings.getSettings();
     res.json({ settings });
@@ -79,7 +97,7 @@ router.get('/settings', adminAuth, async (req, res) => {
 });
 
 // Update site settings
-router.put('/settings', adminAuth, [
+router.put('/settings', blockMobileAdminAccess, adminAuth, [
   body('siteTitle').optional().trim().isLength({ min: 1 }).withMessage('Site title cannot be empty'),
   body('siteDescription').optional().trim().isLength({ min: 1 }).withMessage('Site description cannot be empty'),
   body('contactInfo.happyCustomers').optional().trim(),
@@ -129,7 +147,7 @@ router.put('/settings', adminAuth, [
 });
 
 // Get dashboard statistics
-router.get('/dashboard', adminAuth, async (req, res) => {
+router.get('/dashboard', blockMobileAdminAccess, adminAuth, async (req, res) => {
   try {
     const totalUsers = await User.countDocuments({ role: 'user' });
     const totalMerchants = await User.countDocuments({ role: 'merchant' });

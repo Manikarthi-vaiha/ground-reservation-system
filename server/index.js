@@ -21,6 +21,11 @@ app.use('/api/events', require('./routes/events'));
 app.use('/api/ps5', require('./routes/ps5'));
 app.use('/api/admin', require('./routes/admin'));
 
+// Mobile API Routes (REST APIs for mobile app)
+app.use('/api/mobile', require('./routes/mobile'));
+app.use('/api/mobile/user', require('./routes/mobile-user'));
+app.use('/api/mobile/merchant', require('./routes/mobile-merchant'));
+
 // Connect to MongoDB
 mongoose.connect(config.MONGODB_URI)
   .then(() => console.log('Connected to MongoDB'))
